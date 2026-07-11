@@ -1,0 +1,102 @@
+# Python bytecode
+
+**pycache**/
+*.py[cod]
+*$py.class
+
+# C extensions
+
+*.so
+
+# Distribution / packaging
+
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+
+.venv/
+venv/
+env/
+ENV/
+
+# uv
+
+.python-version
+.uv/
+
+# Environment variables
+
+.env
+.env.*
+!.env.example
+
+# Testing
+
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Type checkers
+
+.mypy_cache/
+.pyre/
+.pytype/
+
+# Linters
+
+.ruff_cache/
+
+# Jupyter
+
+.ipynb_checkpoints/
+
+# IDEs
+
+.vscode/
+.idea/
+
+# macOS
+
+.DS_Store
+
+# Logs
+
+*.log
+
+# Temporary files
+
+*.tmp
+*.temp
+
+# Python tooling
+
+.tox/
+.nox/
+
+# Coverage
+
+coverage.xml
+
+# Local databases
+
+*.db
+*.sqlite
+*.sqlite3
+# /llm-inetgrations/.env
+# /llm-intEgrations/.env
+/llm-inetgrations/.env
+/llm-integrations/.env
