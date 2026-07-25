@@ -23,36 +23,48 @@ def ask_groq(question: str) -> str:
 
 def ask_openrouter(question: str) -> str:
   from openai import OpenAI
+  start_time = time.perf_counter()
   client = OpenAI(api_key=os.environ["OPENROUTER_API_KEY"], base_url="https://openrouter.ai/api/v1")
   response = client.chat.completions.create(
     model="openrouter/free",
     max_tokens=200,
     messages=[{"role":"user", "content":question}]
   )
+  end_time = time.perf_counter()
+  latency_ms = ( end_time - start_time ) * 1000
+  print(f"token usages: prompt_tokens: {response.usage.prompt_tokens}, completion_tokens: {response.usage.completion_tokens}, latency: {latency_ms}")
   return response.choices[0].message.content
 
 def ask_anthropic(question: str) -> str:
   from anthropic import Anthropic
+  start_time = time.perf_counter()
   client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
   response = client.messages.create(
     model="claude-3-5-haiku-20241022",
     max_tokens=200,
     messages=[{"role": "user", "content": question}],
   )
+  end_time = time.perf_counter()
+  latency_ms = ( end_time - start_time ) * 1000
+  print(f"token usages: prompt_tokens: {response.usage.prompt_tokens}, completion_tokens: {response.usage.completion_tokens}, latency: {latency_ms}")
   return response.content[0].text
 
 def ask_openai(question: str) -> str:
-  from openai import OpenAI
+  try:
+    from openai import OpenAI
 
-  client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-  response = client.chat.completions.create(
-      model="gpt-4o-mini",
-      max_tokens=200,
-      messages=[{"role": "user", "content": question}],
-  )
+    client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        max_tokens=200,
+        messages=[{"role": "user", "content": question}],
+    )
 
-  print(response)
-  return response.choices[0].message.content # 2024
+    print(response)
+    return response.choices[0].message.content # 2024
+  except Exception as e:
+    print(f"Unexpected Error: {str(e)}")
+    return 'API failed'
 
 
 

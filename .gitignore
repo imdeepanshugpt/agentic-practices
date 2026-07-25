@@ -96,7 +96,5 @@ coverage.xml
 *.db
 *.sqlite
 *.sqlite3
-# /llm-inetgrations/.env
-# /llm-intEgrations/.env
 /llm-inetgrations/.env
 /llm-integrations/.env
