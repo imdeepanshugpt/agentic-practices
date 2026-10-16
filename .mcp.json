@@ -1,0 +1,14 @@
+{
+	"mcpServers": {
+		"my-mcp-server-8efb69fb": {
+			"type": "stdio",
+			"command": "uv",
+			"args": [
+				"run",
+				"fastmcp",
+				"run",
+				"recipe-box.py"
+			]
+		}
+	}
+}
